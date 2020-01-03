@@ -5,6 +5,7 @@ authors = ["Martin Larralde <martin.larralde@ens-paris-saclay.fr>"]
 edition = "2018"
 
 [lib]
+path = "lib.rs"
 proc-macro = true
 
 [dependencies.proc-macro-hack]
