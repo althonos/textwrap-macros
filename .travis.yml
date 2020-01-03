@@ -1,0 +1,44 @@
+sudo: false
+dist: xenial
+language: rust
+
+cache:
+  cargo: true
+
+rust:
+- stable
+- beta
+- nightly
+
+env:
+  global:
+  - PATH="$HOME/.cargo/bin:$PATH"
+  - RUST_BACKTRACE=full
+  - RUSTFLAGS="-Ctarget-cpu=native"
+
+git:
+  depth: false
+
+before_install:
+- ci/travis/setup.sh
+
+script:
+- ci/travis/script.sh
+
+after_script:
+- curl -SsL "https://codecov.io/bash" | bash
+
+before_cache:
+- cargo cache -a
+
+deploy:
+  provider: script
+  script: ci/travis/deploy.sh
+  on:
+    tags: true
+    repo: althonos/textwrap-macros
+    rust: stable
+
+notifications:
+  email:
+  - althonosdev@gmail.com
