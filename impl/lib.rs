@@ -31,12 +31,12 @@ pub fn dedent(tokens: TokenStream) -> TokenStream {
 
 // ---------------------------------------------------------------------------
 
-struct WrapInput {
+struct FillInput {
     lit: syn::LitStr,
     width: syn::LitInt,
 }
 
-impl Parse for WrapInput {
+impl Parse for FillInput {
     fn parse(input: ParseStream) -> ParseResult<Self> {
         let lit = input.parse()?;
         input.parse::<syn::Token![,]>()?;
@@ -45,14 +45,13 @@ impl Parse for WrapInput {
     }
 }
 
-
-// #[proc_macro_hack::proc_macro_hack]
-// pub fn wrap(tokens: TokenStream) -> TokenStream {
-//     let input = parse_macro_input!(tokens as WrapInput);
-//     let width = input.width.base10_parse().expect("could not parse number");
-//     let newstr = textwrap::wrap(&input.lit.value(), width);
-//     format!("{:?}", newstr).parse().unwrap()
-// }
+#[proc_macro_hack::proc_macro_hack]
+pub fn fill(tokens: TokenStream) -> TokenStream {
+    let input = parse_macro_input!(tokens as FillInput);
+    let width = input.width.base10_parse().expect("could not parse number");
+    let newstr = textwrap::fill(&input.lit.value(), width);
+    format!("{:?}", newstr).parse().unwrap()
+}
 
 // ---------------------------------------------------------------------------
 
