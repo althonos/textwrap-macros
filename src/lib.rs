@@ -15,8 +15,7 @@
 //! Either use the macros using the old-style `#[macro_use]` or import them as
 //! any other crate member:
 //! ```rust
-//! #[macro_use]
-//! extern crate textwrap_macros;
+//! use textwrap_macros::dedent;
 //!
 //! const poem: &str = dedent!(r#"
 //!       When we two parted
