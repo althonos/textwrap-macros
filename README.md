@@ -40,11 +40,11 @@ const poem: &str = dedent!(r#"
 "#);
 ```
 
-Checkout the [documentation of the original library](https://docs.rs/textwrap/0.11.0/textwrap/)
+Checkout the [documentation of the original library](https://docs.rs/textwrap/)
 for more information about the behaviour of each of the wrapped functions.
 
 ## Changelog
 
 This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html)
-and provides a [changelog](https://github.com/althonos/obofoundry.rs/blob/master/CHANGELOG.md)
+and provides a [changelog](https://github.com/althonos/textwrap-macros/blob/master/CHANGELOG.md)
 in the [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) format.
