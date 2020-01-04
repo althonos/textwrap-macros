@@ -1,14 +1,20 @@
-#!/bin/sh
+#!/bin/sh -e
 
 . $(dirname $0)/functions.sh
 
-# --- Publish crate to `crates.io` ---------------------------------------------
+# --- Publish crates to `crates.io` ------------------------------------------
 
-log Deploying \`$(basename $TRAVIS_REPO_SLUG)\` v$TRAVIS_TAG
+log Deploying implementation crate
+cargo publish --manifest-path impl/Cargo.toml --token $CRATES_IO_TOKEN
+
+sleep 10
+cargo update
+
+log Deploying declaration crate
 cargo publish --token $CRATES_IO_TOKEN
 
 
-# --- Update release tags using Chandler ---------------------------------------
+# --- Update release tags using Chandler -------------------------------------
 
 export GEM_PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')"
 export PATH="${GEM_PATH}/bin:$PATH"

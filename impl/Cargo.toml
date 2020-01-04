@@ -3,10 +3,27 @@ name = "textwrap-macros-impl"
 version = "0.1.0"
 authors = ["Martin Larralde <martin.larralde@ens-paris-saclay.fr>"]
 edition = "2018"
+license = "MIT"
+description = "Simple procedural macros to use textwrap utilities at compile time."
+repository = "https://github.com/althonos/textwrap-macros"
+homepage = "https://github.com/althonos/textwrap-macros"
+readme = "README.md"
+keywords = ["text", "formatting", "wrap", "typesetting", "macro"]
+categories = ["text-processing", "development-tools::build-utils"]
 
 [lib]
 path = "lib.rs"
 proc-macro = true
+
+[badges.travis-ci]
+repository = "althonos/textwrap-macros"
+[badges.codecov]
+repository = "althonos/textwrap-macros"
+service    = "github"
+[badges.is-it-maintained-issue-resolution]
+repository = "althonos/textwrap-macros"
+[badges.maintenance]
+status     = "actively-developed"
 
 [dependencies.proc-macro-hack]
 version = "0.5"
