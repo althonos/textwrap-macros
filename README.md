@@ -39,7 +39,7 @@ const poem: &str = dedent!(r#"
 "#);
 ```
 
-Checkout the [documentation of the original library](https://docs.rs/textwrap/)
+Check out the [documentation of the original library](https://docs.rs/textwrap/)
 for more information about the behaviour of each of the wrapped functions.
 
 ## Changelog
