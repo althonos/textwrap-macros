@@ -1,4 +1,4 @@
-# `textwrap-macros`
+# `textwrap-macros` [![Star me](https://img.shields.io/github/stars/althonos/textwrap-macros.svg?style=social&label=Star&maxAge=3600)](https://github.com/althonos/textwrap-macros/stargazers)
 
 *Simple procedural macros to use [`textwrap`] utilities at compile time.*
 
