@@ -2,10 +2,9 @@ extern crate proc_macro;
 extern crate syn;
 extern crate textwrap;
 
-use std::fmt::Write;
-
 use proc_macro::TokenStream;
 use syn::parse_macro_input;
+use syn::export::ToTokens;
 use syn::parse::Parse;
 use syn::parse::ParseStream;
 use syn::parse::Result as ParseResult;
@@ -28,7 +27,10 @@ impl Parse for DedentInput {
 pub fn dedent(tokens: TokenStream) -> TokenStream {
     let input = parse_macro_input!(tokens as DedentInput);
     let newstr = textwrap::dedent(&input.lit.value());
-    format!("{:?}", newstr).parse().unwrap()
+
+    syn::LitStr::new(&newstr, input.lit.span())
+        .into_token_stream()
+        .into()
 }
 
 // ---------------------------------------------------------------------------
@@ -52,7 +54,10 @@ pub fn fill(tokens: TokenStream) -> TokenStream {
     let input = parse_macro_input!(tokens as FillInput);
     let width = input.width.base10_parse().expect("could not parse number");
     let newstr = textwrap::fill(&input.lit.value(), width);
-    format!("{:?}", newstr).parse().unwrap()
+
+    syn::LitStr::new(&newstr, input.lit.span())
+        .into_token_stream()
+        .into()
 }
 
 // ---------------------------------------------------------------------------
@@ -75,7 +80,10 @@ impl Parse for IndentInput {
 pub fn indent(tokens: TokenStream) -> TokenStream {
     let input = parse_macro_input!(tokens as IndentInput);
     let newstr = textwrap::indent(&input.lit.value(), &input.prefix.value());
-    format!("{:?}", newstr).parse().unwrap()
+
+    syn::LitStr::new(&newstr, input.lit.span())
+        .into_token_stream()
+        .into()
 }
 
 // ---------------------------------------------------------------------------
@@ -99,12 +107,22 @@ pub fn wrap(tokens: TokenStream) -> TokenStream {
     let input = parse_macro_input!(tokens as WrapInput);
     let width = input.width.base10_parse().expect("could not parse number");
 
-    let mut newstr = String::new();
-    newstr.push_str("&[");
-    for line in textwrap::wrap_iter(&input.lit.value(), width) {
-        write!(newstr, "{:?},", &line).unwrap();
-    }
-    newstr.push_str("]");
+    let elems = textwrap::wrap_iter(&input.lit.value(), width)
+        .map(|s| syn::Lit::from(syn::LitStr::new(&s, input.lit.span())))
+        .map(|lit| syn::Expr::Lit(syn::ExprLit { lit, attrs: Vec::new() }))
+        .collect();
+    let array = syn::ExprArray {
+        elems,
+        attrs: Vec::new(),
+        bracket_token: Default::default(),
+    };
+    let expr = syn::ExprReference {
+        attrs: Vec::new(),
+        and_token: Default::default(),
+        raw: Default::default(),
+        mutability: None,
+        expr: Box::new(syn::Expr::Array(array)),
+    };
 
-    newstr.parse().unwrap()
+    expr.into_token_stream().into()
 }
