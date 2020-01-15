@@ -14,6 +14,7 @@ categories = ["text-processing", "development-tools::build-utils"]
 [lib]
 path = "lib.rs"
 proc-macro = true
+doc = false
 
 [badges.travis-ci]
 repository = "althonos/textwrap-macros"
