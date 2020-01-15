@@ -2,6 +2,8 @@ extern crate proc_macro;
 extern crate syn;
 extern crate textwrap;
 
+use std::fmt::Write;
+
 use proc_macro::TokenStream;
 use syn::parse_macro_input;
 use syn::parse::Parse;
@@ -74,4 +76,35 @@ pub fn indent(tokens: TokenStream) -> TokenStream {
     let input = parse_macro_input!(tokens as IndentInput);
     let newstr = textwrap::indent(&input.lit.value(), &input.prefix.value());
     format!("{:?}", newstr).parse().unwrap()
+}
+
+// ---------------------------------------------------------------------------
+
+struct WrapInput {
+    lit: syn::LitStr,
+    width: syn::LitInt,
+}
+
+impl Parse for WrapInput {
+    fn parse(input: ParseStream) -> ParseResult<Self> {
+        let lit = input.parse()?;
+        input.parse::<syn::Token![,]>()?;
+        let width = input.parse()?;
+        Ok(Self { lit, width })
+    }
+}
+
+#[proc_macro_hack::proc_macro_hack]
+pub fn wrap(tokens: TokenStream) -> TokenStream {
+    let input = parse_macro_input!(tokens as WrapInput);
+    let width = input.width.base10_parse().expect("could not parse number");
+
+    let mut newstr = String::new();
+    newstr.push_str("&[");
+    for line in textwrap::wrap_iter(&input.lit.value(), width) {
+        write!(newstr, "{:?},", &line).unwrap();
+    }
+    newstr.push_str("]");
+
+    newstr.parse().unwrap()
 }

@@ -125,3 +125,24 @@ pub use textwrap_macros_impl::indent;
 ///
 /// See also [textwrap::fill](https://docs.rs/textwrap/latest/textwrap/fn.fill.html).
 pub use textwrap_macros_impl::fill;
+
+
+#[proc_macro_hack::proc_macro_hack]
+/// Wrap a line of text at width characters.
+///
+/// Strings are wrapped based on their displayed width, not their size in
+/// bytes.
+///
+/// # Usage
+/// ```rust, ignore
+/// wrap!($text: lit &str, $width: lit usize) -> lit &[ &str ]
+/// ```
+///
+/// # Example
+/// ```rust
+/// use textwrap_macros::wrap;
+///
+/// const LINES: &[&str] = wrap!("Concurrency without data races.", 15);
+/// assert_eq!(LINES, ["Concurrency", "without data", "races."]);
+/// ```
+pub use textwrap_macros_impl::wrap;
