@@ -6,10 +6,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
-[Unreleased]: https://github.com/althonos/textwrap-macros/compare/v0.1.0...HEAD
+
+[Unreleased]: https://github.com/althonos/textwrap-macros/compare/v0.2.0...HEAD
+
+
+## [v0.2.0] - 2020-01-15
+
+## Added
+- Implementation of the [`textwrap::wrap`] function as a macro producing a
+  inline static slice of static strings.
+
+[v0.2.0]: https://github.com/althonos/textwrap-macros/compare/v0.1.0...v0.2.0
+[`textwrap::wrap`]: https://docs.rs/textwrap/0.11.0/textwrap/fn.wrap.html
 
 
 ## [v0.1.0] - 2020-01-07
-[v0.1.0]: https://github.com/althonos/textwrap-macros/compare/c55dc29...v0.1.0
 
 Initial release.
+
+[v0.1.0]: https://github.com/althonos/textwrap-macros/compare/c55dc29...v0.1.0
