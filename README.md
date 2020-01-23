@@ -4,7 +4,7 @@
 
 [`textwrap`]: https://github.com/mgeisler/textwrap
 
-[![TravisCI](https://img.shields.io/travis/althonos/textwrap-macros/master.svg?maxAge=600&style=flat-square)](https://travis-ci.com/althonos/textwrap-macros/branches)
+[![TravisCI](https://img.shields.io/travis/com/althonos/textwrap-macros/master.svg?maxAge=600&style=flat-square)](https://travis-ci.com/althonos/textwrap-macros/branches)
 [![Codecov](https://img.shields.io/codecov/c/gh/althonos/textwrap-macros/master.svg?style=flat-square&maxAge=600)](https://codecov.io/gh/althonos/textwrap-macros)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&maxAge=2678400)](https://choosealicense.com/licenses/mit/)
 [![Source](https://img.shields.io/badge/source-GitHub-303030.svg?maxAge=2678400&style=flat-square)](https://github.com/althonos/textwrap-macros)
