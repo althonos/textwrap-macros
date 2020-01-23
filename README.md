@@ -19,7 +19,7 @@ Add the `textwrap-macros` crate to the `Cargo.toml` manifest:
 
 ```toml
 [dependencies]
-textwrap-macros = "0.1"
+textwrap-macros = "0.2"
 ```
 
 Then either use the macros using the old-style `#[macro_use]` or import them as

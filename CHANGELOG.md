@@ -7,12 +7,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/althonos/textwrap-macros/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/althonos/textwrap-macros/compare/v0.2.1...HEAD
+
+
+## [v0.2.1] - 2020-01-23
+
+### Fixed
+- Travis-CI build button not rendering properly on `README.md`.
+
+### Changed
+- Implementation does convert token stream directly from `syn` types instead of
+  parsing intermediate Rust code.
+
+[v0.2.1]: https://github.com/althonos/textwrap-macros/compare/v0.2.0...v0.2.1
 
 
 ## [v0.2.0] - 2020-01-15
 
-## Added
+### Added
 - Implementation of the [`textwrap::wrap`] function as a macro producing a
   inline static slice of static strings.
 
