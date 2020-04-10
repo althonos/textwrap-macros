@@ -1,6 +1,6 @@
 [package]
 name = "textwrap-macros"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Martin Larralde <martin.larralde@ens-paris-saclay.fr>"]
 edition = "2018"
 license = "MIT"
@@ -28,5 +28,5 @@ status     = "actively-developed"
 version = "0.5"
 
 [dependencies.textwrap-macros-impl]
-version = "0.2.1"
+version = "0.2.2"
 path = "./impl"
