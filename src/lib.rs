@@ -49,7 +49,7 @@ extern crate proc_macro_hack;
 ///
 /// # Usage
 /// ```rust,ignore
-/// dedent!($text: lit &str) -> &str
+/// dedent!($text: lit &str) -> lit &str
 /// ```
 ///
 /// # Example
@@ -82,7 +82,7 @@ pub use textwrap_macros_impl::dedent;
 ///
 /// # Usage
 /// ```rust,ignore
-/// indent!($text: lit &str, $prefix: lit &str) -> &str
+/// indent!($text: lit &str, $prefix: lit &str) -> lit &str
 /// ```
 ///
 /// # Example
@@ -112,7 +112,7 @@ pub use textwrap_macros_impl::indent;
 ///
 /// # Usage
 /// ```rust, ignore
-/// fill!($text: lit &str, $width: lit usize) -> &str
+/// fill!($text: lit &str, $width: lit usize) -> lit &str
 /// ```
 ///
 /// # Example
@@ -135,7 +135,7 @@ pub use textwrap_macros_impl::fill;
 ///
 /// # Usage
 /// ```rust, ignore
-/// wrap!($text: lit &str, $width: lit usize) -> lit &[ &str ]
+/// wrap!($text: lit &str, $width: lit usize) -> lit &[ lit &str ]
 /// ```
 ///
 /// # Example

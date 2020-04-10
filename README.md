@@ -39,8 +39,18 @@ const poem: &str = dedent!(r#"
 "#);
 ```
 
+Macros usage with small examples can be found on
+[`docs.rs`](https://docs.rs/textwrap-macros). The following functions have been
+ported into macros:
+
+- [x] [`dedent`](https://docs.rs/textwrap-macros/latest/textwrap_macros/macro.dedent.html)
+- [x] [`fill`](https://docs.rs/textwrap-macros/latest/textwrap_macros/macro.fill.html)
+- [x] [`indent`](https://docs.rs/textwrap-macros/latest/textwrap_macros/macro.indent.html)
+- [x] [`wrap`](https://docs.rs/textwrap-macros/latest/textwrap_macros/macro.wrap.html)
+
 Check out the [documentation of the original library](https://docs.rs/textwrap/)
 for more information about the behaviour of each of the wrapped functions.
+
 
 ## Changelog
 
