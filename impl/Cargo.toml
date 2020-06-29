@@ -35,4 +35,4 @@ default-features = false
 features = ["parsing", "full", "printing", "proc-macro"]
 
 [dependencies.textwrap]
-version = "0.11.0"
+version = "0.12.0"

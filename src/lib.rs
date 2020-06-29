@@ -29,7 +29,7 @@
 //! "#);
 //! ```
 //!
-//! Checkout the [documentation of the original library](https://docs.rs/textwrap/0.11.0/textwrap/)
+//! Checkout the [documentation of the original library](https://docs.rs/textwrap/0.12.0/textwrap/)
 //! for more information about the behaviour of each of the wrapped functions.
 //!
 //! ## Changelog
@@ -125,7 +125,6 @@ pub use textwrap_macros_impl::indent;
 ///
 /// See also [textwrap::fill](https://docs.rs/textwrap/latest/textwrap/fn.fill.html).
 pub use textwrap_macros_impl::fill;
-
 
 #[proc_macro_hack::proc_macro_hack]
 /// Wrap a line of text at width characters.
