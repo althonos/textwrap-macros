@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/althonos/textwrap-macros/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/althonos/textwrap-macros/compare/v0.2.3...HEAD
+
+
+## [v0.2.3] - 2020-06-29
+
+### Changed
+- Bumped `textwrap` dependency to `v0.12.0` to support ANSI escape codes
+  ([#1](https://github.com/althonos/textwrap-macros/pull/1)).
+
+[v0.2.3]: https://github.com/althonos/textwrap-macros/compare/v0.2.2...v0.2.3
 
 
 ## [v0.2.2] - 2020-04-10
