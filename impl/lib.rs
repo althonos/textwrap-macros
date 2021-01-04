@@ -52,7 +52,7 @@ impl Parse for FillInput {
 #[proc_macro_hack::proc_macro_hack]
 pub fn fill(tokens: TokenStream) -> TokenStream {
     let input = parse_macro_input!(tokens as FillInput);
-    let width = input.width.base10_parse().expect("could not parse number");
+    let width: usize = input.width.base10_parse().expect("could not parse number");
     let newstr = textwrap::fill(&input.lit.value(), width);
 
     syn::LitStr::new(&newstr, input.lit.span())
@@ -105,9 +105,10 @@ impl Parse for WrapInput {
 #[proc_macro_hack::proc_macro_hack]
 pub fn wrap(tokens: TokenStream) -> TokenStream {
     let input = parse_macro_input!(tokens as WrapInput);
-    let width = input.width.base10_parse().expect("could not parse number");
+    let width: usize = input.width.base10_parse().expect("could not parse number");
 
-    let elems = textwrap::wrap_iter(&input.lit.value(), width)
+    let elems = textwrap::wrap(&input.lit.value(), width)
+        .iter()
         .map(|s| syn::Lit::from(syn::LitStr::new(&s, input.lit.span())))
         .map(|lit| syn::Expr::Lit(syn::ExprLit { lit, attrs: Vec::new() }))
         .collect();
