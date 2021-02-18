@@ -1,6 +1,6 @@
 [package]
 name = "textwrap-macros-impl"
-version = "0.2.4"
+version = "0.2.5"
 authors = ["Martin Larralde <martin.larralde@ens-paris-saclay.fr>"]
 edition = "2018"
 license = "MIT"
@@ -16,8 +16,6 @@ path = "lib.rs"
 proc-macro = true
 doc = false
 
-[badges.travis-ci]
-repository = "althonos/textwrap-macros"
 [badges.codecov]
 repository = "althonos/textwrap-macros"
 service    = "github"
