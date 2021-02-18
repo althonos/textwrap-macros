@@ -34,5 +34,8 @@ version = "1.0"
 default-features = false
 features = ["parsing", "full", "printing", "proc-macro"]
 
+[dependencies.quote]
+version = "1.0"
+
 [dependencies.textwrap]
 version = "0.13"

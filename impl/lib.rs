@@ -3,8 +3,8 @@ extern crate syn;
 extern crate textwrap;
 
 use proc_macro::TokenStream;
+use quote::ToTokens;
 use syn::parse_macro_input;
-use syn::export::ToTokens;
 use syn::parse::Parse;
 use syn::parse::ParseStream;
 use syn::parse::Result as ParseResult;
