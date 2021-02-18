@@ -4,15 +4,15 @@ extern crate textwrap;
 
 use proc_macro::TokenStream;
 use quote::ToTokens;
-use syn::parse_macro_input;
 use syn::parse::Parse;
 use syn::parse::ParseStream;
 use syn::parse::Result as ParseResult;
+use syn::parse_macro_input;
 
 // ---------------------------------------------------------------------------
 
 struct DedentInput {
-    lit: syn::LitStr
+    lit: syn::LitStr,
 }
 
 impl Parse for DedentInput {
@@ -110,7 +110,12 @@ pub fn wrap(tokens: TokenStream) -> TokenStream {
     let elems = textwrap::wrap(&input.lit.value(), width)
         .iter()
         .map(|s| syn::Lit::from(syn::LitStr::new(&s, input.lit.span())))
-        .map(|lit| syn::Expr::Lit(syn::ExprLit { lit, attrs: Vec::new() }))
+        .map(|lit| {
+            syn::Expr::Lit(syn::ExprLit {
+                lit,
+                attrs: Vec::new(),
+            })
+        })
         .collect();
     let array = syn::ExprArray {
         elems,
