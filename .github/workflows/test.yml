@@ -1,0 +1,61 @@
+name: Test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust-toolchain:
+          - stable
+          - beta
+          - nightly
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
+    - name: Setup Rust ${{ matrix.rust-toolchain }}
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: ${{ matrix.rust-toolchain }}
+        override: true
+    - name: Setup cache for cargo
+      uses: actions/cache@v2
+      with:
+        path: target
+        key: ${{ runner.os }}-cargo-${{ matrix.rust-toolchain }}
+    - name: Check code
+      uses: actions-rs/cargo@v1
+      with:
+        command: check
+    - name: Measure code coverage
+      uses: actions-rs/tarpaulin@v0.1
+      with:
+        version: '0.16.0'
+        args: '--lib -v --out Xml --ciserver github-actions'
+    - name: Upload coverage statistics
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        flags: rust-${{ matrix.rust-toolchain }}
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Setup Rust stable
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+          components: rustfmt
+      - name: Check code format
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
