@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Compilation issues with latest version of `syn` not exporting some traits
   required by `textwrap-macros-impl`.
 
-[Unreleased]: https://github.com/althonos/textwrap-macros/compare/v0.2.4...v0.2.5
+[v0.2.5]: https://github.com/althonos/textwrap-macros/compare/v0.2.4...v0.2.5
 
 
 ## [v0.2.4] - 2021-01-04
