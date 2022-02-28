@@ -36,4 +36,4 @@ features = ["parsing", "full", "printing", "proc-macro"]
 version = "1.0"
 
 [dependencies.textwrap]
-version = "0.13"
+version = "0.15"
