@@ -14,6 +14,10 @@ categories = ["text-processing", "development-tools::build-utils"]
 [workspace]
 members = ["impl"]
 
+[features]
+default = ["std"]
+std = []
+
 [badges.codecov]
 repository = "althonos/textwrap-macros"
 service    = "github"
