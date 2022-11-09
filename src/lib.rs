@@ -90,13 +90,13 @@ pub use textwrap_macros_impl::dedent;
 /// ```rust
 /// use textwrap_macros::indent;
 ///
-/// const Y: &str = indent!("
-/// Foo
+/// const Y: &str = indent!(
+/// "Foo
 /// Bar
 /// ", "-> ");
 ///
-/// assert_eq!(Y, "
-/// -> Foo
+/// assert_eq!(Y,
+/// "-> Foo
 /// -> Bar
 /// ");
 /// ```
