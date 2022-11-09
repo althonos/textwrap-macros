@@ -47,6 +47,9 @@ ported into macros:
 - [x] [`fill`](https://docs.rs/textwrap-macros/latest/textwrap_macros/macro.fill.html)
 - [x] [`indent`](https://docs.rs/textwrap-macros/latest/textwrap_macros/macro.indent.html)
 - [x] [`wrap`](https://docs.rs/textwrap-macros/latest/textwrap_macros/macro.wrap.html)
+- [ ] [`unfill`](https://docs.rs/textwrap/latest/textwrap/fn.unfill.html)
+- [ ] [`refill`](https://docs.rs/textwrap/latest/textwrap/fn.refill.html)
+- [ ] [`wrap_columns`](https://docs.rs/textwrap/latest/textwrap/fn.wrap_columns.html)
 
 Check out the [documentation of the original library](https://docs.rs/textwrap/)
 for more information about the behaviour of each of the wrapped functions.
