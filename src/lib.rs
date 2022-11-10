@@ -171,3 +171,30 @@ pub use textwrap_macros_impl::wrap;
 /// assert_eq!(TEXT, "Concurrency without data races.\n");
 /// ```
 pub use textwrap_macros_impl::unfill;
+
+#[proc_macro_hack::proc_macro_hack]
+/// Refill a paragraph of wrapped text with a new width.
+///
+/// This function will first use the `unfill` function to remove newlines from 
+/// the text. Afterwards the text is filled again using the `fill` function.
+///
+/// # Usage
+/// ```rust, ignore
+/// fill!($text: lit &str, $width: lit usize) -> lit &str
+/// ```
+///
+/// # Example
+/// ```rust
+/// use textwrap_macros::refill;
+///
+/// const TEXT: &str = refill!("\
+/// Concurrency
+/// without data
+/// races.
+/// ", 20);
+/// assert_eq!(TEXT, "\
+/// Concurrency without
+/// data races.
+/// ");
+/// ```
+pub use textwrap_macros_impl::refill;

@@ -62,6 +62,33 @@ pub fn fill(tokens: TokenStream) -> TokenStream {
 
 // ---------------------------------------------------------------------------
 
+struct RefillInput {
+    lit: syn::LitStr,
+    width: syn::LitInt,
+}
+
+impl Parse for RefillInput {
+    fn parse(input: ParseStream) -> ParseResult<Self> {
+        let lit = input.parse()?;
+        input.parse::<syn::Token![,]>()?;
+        let width = input.parse()?;
+        Ok(Self { lit, width })
+    }
+}
+
+#[proc_macro_hack::proc_macro_hack]
+pub fn refill(tokens: TokenStream) -> TokenStream {
+    let input = parse_macro_input!(tokens as RefillInput);
+    let width: usize = input.width.base10_parse().expect("could not parse number");
+    let newstr = textwrap::refill(&input.lit.value(), width);
+
+    syn::LitStr::new(&newstr, input.lit.span())
+        .into_token_stream()
+        .into()
+}
+
+// ---------------------------------------------------------------------------
+
 struct UnfillInput {
     lit: syn::LitStr,
 }
