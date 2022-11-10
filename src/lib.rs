@@ -150,8 +150,8 @@ pub use textwrap_macros_impl::wrap;
 #[proc_macro_hack::proc_macro_hack]
 /// Unpack a paragraph of already-wrapped text.
 ///
-/// This function attempts to recover the original text from a single paragraph 
-/// of text. In addition, it will recognize a common prefix and a common line 
+/// This function attempts to recover the original text from a single paragraph
+/// of text. In addition, it will recognize a common prefix and a common line
 /// ending among the lines.
 ///
 /// # Usage
@@ -175,7 +175,7 @@ pub use textwrap_macros_impl::unfill;
 #[proc_macro_hack::proc_macro_hack]
 /// Refill a paragraph of wrapped text with a new width.
 ///
-/// This function will first use the `unfill` function to remove newlines from 
+/// This function will first use the `unfill` function to remove newlines from
 /// the text. Afterwards the text is filled again using the `fill` function.
 ///
 /// # Usage
