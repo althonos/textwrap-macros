@@ -1,6 +1,6 @@
 [package]
 name = "textwrap-macros-impl"
-version = "0.2.5"
+version = "0.3.0"
 authors = ["Martin Larralde <martin.larralde@ens-paris-saclay.fr>"]
 edition = "2018"
 license = "MIT"
