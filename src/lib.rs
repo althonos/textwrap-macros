@@ -90,13 +90,13 @@ pub use textwrap_macros_impl::dedent;
 /// ```rust
 /// use textwrap_macros::indent;
 ///
-/// const Y: &str = indent!(
-/// "Foo
+/// const Y: &str = indent!("\
+/// Foo
 /// Bar
 /// ", "-> ");
 ///
-/// assert_eq!(Y,
-/// "-> Foo
+/// assert_eq!(Y, "\
+/// -> Foo
 /// -> Bar
 /// ");
 /// ```
@@ -146,3 +146,28 @@ pub use textwrap_macros_impl::fill;
 /// assert_eq!(LINES, ["Concurrency", "without data", "races."]);
 /// ```
 pub use textwrap_macros_impl::wrap;
+
+#[proc_macro_hack::proc_macro_hack]
+/// Unpack a paragraph of already-wrapped text.
+///
+/// This function attempts to recover the original text from a single paragraph 
+/// of text. In addition, it will recognize a common prefix and a common line 
+/// ending among the lines.
+///
+/// # Usage
+/// ```rust, ignore
+/// unfill!($text: lit &str) -> lit &str
+/// ```
+///
+/// # Example
+/// ```rust
+/// use textwrap_macros::unfill;
+///
+/// const TEXT: &str = unfill!("\
+///     Concurrency
+///     without data
+///     races.
+/// ");
+/// assert_eq!(TEXT, "Concurrency without data races.\n");
+/// ```
+pub use textwrap_macros_impl::unfill;

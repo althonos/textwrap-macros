@@ -62,6 +62,31 @@ pub fn fill(tokens: TokenStream) -> TokenStream {
 
 // ---------------------------------------------------------------------------
 
+struct UnfillInput {
+    lit: syn::LitStr,
+}
+
+impl Parse for UnfillInput {
+    fn parse(input: ParseStream) -> ParseResult<Self> {
+        Ok(Self {
+            lit: input.parse()?,
+        })
+    }
+}
+
+#[proc_macro_hack::proc_macro_hack]
+pub fn unfill(tokens: TokenStream) -> TokenStream {
+    let input = parse_macro_input!(tokens as UnfillInput);
+    let newstr = textwrap::unfill(&input.lit.value()).0;
+
+    syn::LitStr::new(&newstr, input.lit.span())
+        .into_token_stream()
+        .into()
+}
+
+
+// ---------------------------------------------------------------------------
+
 struct IndentInput {
     lit: syn::LitStr,
     prefix: syn::LitStr,
