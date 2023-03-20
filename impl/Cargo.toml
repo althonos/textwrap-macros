@@ -28,7 +28,7 @@ status     = "actively-developed"
 version = "0.5"
 
 [dependencies.syn]
-version = "1.0"
+version = "2.0"
 default-features = false
 features = ["parsing", "full", "printing", "proc-macro"]
 
